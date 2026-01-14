@@ -2,6 +2,7 @@ import KPICard from "../components/cards/KPICard";
 import { kpis } from "../data/mockKPIs";
 import RevenueExpensesLineChart from "../components/charts/RevenueExpenesesLineChart";
 import ExpensesPieChart from "../components/charts/ExpensesPieChart";
+import TransactionsTable from "../components/tables/TransactionsTable";
 
 const Dashboard = () => {
   return (
@@ -16,6 +17,9 @@ const Dashboard = () => {
       {/* Charts */}
       <RevenueExpensesLineChart />
       <ExpensesPieChart />
+
+      {/* Transactions Table */}
+      <TransactionsTable />
     </div>
   );
 };

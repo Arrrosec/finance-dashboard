@@ -1,4 +1,4 @@
-import React from "react";
+
 import { transactions } from "../../data/mockTransaction";
 
 const TransactionsTable = () => {
@@ -13,19 +13,27 @@ const TransactionsTable = () => {
             <th className="px-4 py-2 text-left">Amount</th>
             <th className="px-4 py-2 text-left">Status</th>
             <th className="px-4 py-2 text-left">Date</th>
+            <th className="px-4 py-2 text-left">Actions</th>
+
           </tr>
         </thead>
         <tbody>
-          {transactions.map((t) => (
-            <tr key={t.id} className="border-t text-left">
-              <td className="px-4 py-2">{t.id}</td>
-              <td className="px-4 py-2">{t.customer}</td>
-              <td className="px-4 py-2">${t.amount}</td>
-              <td className="px-4 py-2">{t.status}</td>
-              <td className="px-4 py-2">{t.date}</td>
-            </tr>
-          ))}
-        </tbody>
+        {transactions.map((t) => (
+          <tr key={t.id} className="border-t text-left">
+            <td className="px-4 py-2">{t.id}</td>
+            <td className="px-4 py-2">{t.customer}</td>
+            <td className="px-4 py-2">${t.amount}</td>
+            <td className="px-4 py-2">{t.status}</td>
+            <td className="px-4 py-2">{t.date}</td>
+            <td className="px-4 py-2 space-x-2">
+              <button className="text-blue-500 hover:underline">View</button>
+              <button className="text-yellow-500 hover:underline">Edit</button>
+              <button className="text-red-500 hover:underline">Delete</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+
       </table>
     </div>
   );
