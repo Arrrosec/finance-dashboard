@@ -1,19 +1,19 @@
 import KPICard from "../components/cards/KPICard";
+import { kpis } from "../data/mockKPIs";
 import RevenueExpensesLineChart from "../components/charts/RevenueExpenesesLineChart";
-import TransactionsTable from "../components/tables/TransactionsTable";
 
 const Dashboard = () => {
   return (
     <div className="p-6 space-y-6">
+      {/* KPI Cards */}
       <div className="grid grid-cols-3 gap-4">
-        <KPICard />
-        <KPICard />
-        <KPICard />
+        {kpis.map((kpi) => (
+          <KPICard key={kpi.title} title={kpi.title} value={kpi.value} />
+        ))}
       </div>
 
+      {/* Line Chart */}
       <RevenueExpensesLineChart />
-
-      <TransactionsTable />
     </div>
   );
 };
