@@ -1,7 +1,13 @@
 
-import { transactions } from "../../data/mockTransaction";
+import { transactionsByRange } from "../../data/mockTransaction";
 
-const TransactionsTable = () => {
+interface Props {
+  range: "Today" | "Week" | "Month" | "Year";
+}
+
+const TransactionsTable = ({ range }: Props) => {
+  const transactions = transactionsByRange[range]; // Hardcoded by range
+
   return (
     <div className="bg-white shadow rounded p-4 overflow-x-auto">
       <h3 className="text-lg font-bold mb-2">Recent Transactions</h3>
@@ -14,26 +20,24 @@ const TransactionsTable = () => {
             <th className="px-4 py-2 text-left">Status</th>
             <th className="px-4 py-2 text-left">Date</th>
             <th className="px-4 py-2 text-left">Actions</th>
-
           </tr>
         </thead>
         <tbody>
-        {transactions.map((t) => (
-          <tr key={t.id} className="border-t text-left">
-            <td className="px-4 py-2">{t.id}</td>
-            <td className="px-4 py-2">{t.customer}</td>
-            <td className="px-4 py-2">${t.amount}</td>
-            <td className="px-4 py-2">{t.status}</td>
-            <td className="px-4 py-2">{t.date}</td>
-            <td className="px-4 py-2 space-x-2">
-              <button className="text-blue-500 hover:underline">View</button>
-              <button className="text-yellow-500 hover:underline">Edit</button>
-              <button className="text-red-500 hover:underline">Delete</button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-
+          {transactions.map((t) => (
+            <tr key={t.id} className="border-t text-left">
+              <td className="px-4 py-2">{t.id}</td>
+              <td className="px-4 py-2">{t.customer}</td>
+              <td className="px-4 py-2">${t.amount}</td>
+              <td className="px-4 py-2">{t.status}</td>
+              <td className="px-4 py-2">{t.date}</td>
+              <td className="px-4 py-2 space-x-2">
+                <button className="text-blue-500 hover:underline">View</button>
+                <button className="text-yellow-500 hover:underline">Edit</button>
+                <button className="text-red-500 hover:underline">Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

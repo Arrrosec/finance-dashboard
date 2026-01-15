@@ -1,16 +1,21 @@
 
 import ReactApexChart from "react-apexcharts";
 import type { ApexOptions } from "apexcharts";
-import { expensesByCategory } from "../../data/mockExpeneses";
+import { expensesByRange } from "../../data/mockExpeneses"
 
-const ExpensesPieChart = () => {
-  const series = expensesByCategory.map((e) => e.value);
-  const labels = expensesByCategory.map((e) => e.category);
+interface Props {
+  range: "Today" | "Week" | "Month" | "Year";
+}
+
+const ExpensesPieChart = ({ range }: Props) => {
+  const data = expensesByRange[range];
+  const series = data.map((item) => item.value);
+  const labels = data.map((item) => item.category);
 
   const options: ApexOptions = {
     chart: { type: "donut" },
     labels: labels,
-    colors: ["#3B82F6", "#EF4444", "#F59E0B", "#10B981"],
+    colors: ["#3B82F6", "#EF4444", "#F59E0B"],
     legend: { position: "bottom" },
     dataLabels: { enabled: true },
   };
