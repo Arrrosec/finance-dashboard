@@ -1,5 +1,3 @@
-
-
 interface SidebarProps {
   activePage?: string;
 }
@@ -15,7 +13,7 @@ const Sidebar = ({ activePage = "Dashboard" }: SidebarProps) => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex flex-col px-2">
+      <nav className="flex flex-col px-2 mt-4">
         {links.map((link) => (
           <button
             key={link}
