@@ -1,13 +1,15 @@
 interface KPICardProps {
   title: string;
-  value: number;
+  value?: number; // make it optional
 }
 
 const KPICard = ({ title, value }: KPICardProps) => {
   return (
-    <div className="bg-white shadow rounded p-4">
-      <h4 className="text-gray-500">{title}</h4>
-      <p className="text-2xl font-bold">${value.toLocaleString()}</p>
+    <div className="bg-white shadow rounded p-4 flex flex-col justify-between">
+      <p className="text-sm text-gray-500">{title}</p>
+      <p className="text-2xl font-bold">
+        {value !== undefined ? value.toLocaleString() : "—"}
+      </p>
     </div>
   );
 };

@@ -22,22 +22,39 @@ const TransactionsTable = ({ range }: Props) => {
             <th className="px-4 py-2 text-left">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          {transactions.map((t) => (
-            <tr key={t.id} className="border-t text-left">
-              <td className="px-4 py-2">{t.id}</td>
-              <td className="px-4 py-2">{t.customer}</td>
-              <td className="px-4 py-2">${t.amount}</td>
-              <td className="px-4 py-2">{t.status}</td>
-              <td className="px-4 py-2">{t.date}</td>
-              <td className="px-4 py-2 space-x-2">
-                <button className="text-blue-500 hover:underline">View</button>
-                <button className="text-yellow-500 hover:underline">Edit</button>
-                <button className="text-red-500 hover:underline">Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+     <tbody>
+  {transactions.length === 0 ? (
+    <tr>
+      <td colSpan={6} className="text-center text-gray-400 py-4">
+        No transactions found for this range
+      </td>
+    </tr>
+  ) : (
+    transactions.map((t) => (
+      <tr key={t.id} className="border-t text-left">
+        <td className="px-4 py-2">{t.id}</td>
+        <td className="px-4 py-2">{t.customer}</td>
+        <td className="px-4 py-2">${t.amount.toLocaleString()}</td>
+        <td className="px-4 py-2">
+          <span
+            className={`px-2 py-1 rounded text-white text-xs ${
+              t.status === "Paid" ? "bg-green-500" : "bg-yellow-500"
+            }`}
+          >
+            {t.status}
+          </span>
+        </td>
+        <td className="px-4 py-2">{t.date}</td>
+        <td className="px-4 py-2 space-x-2">
+          <button className="text-blue-500 hover:underline">View</button>
+          <button className="text-yellow-500 hover:underline">Edit</button>
+          <button className="text-red-500 hover:underline">Delete</button>
+        </td>
+      </tr>
+    ))
+  )}
+</tbody>
+
       </table>
     </div>
   );

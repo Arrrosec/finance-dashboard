@@ -1,7 +1,7 @@
-
 import ReactApexChart from "react-apexcharts";
 import type { ApexOptions } from "apexcharts";
 import { revenueExpensesData } from "../../data/mockChatData";
+import ChartCard from "../cards/ChartCard";
 
 interface Props {
   range: "Today" | "Week" | "Month" | "Year";
@@ -9,7 +9,6 @@ interface Props {
 
 const RevenueExpensesLineChart = ({ range }: Props) => {
   const now = new Date();
-
   const filteredIndices = revenueExpensesData.categories
     .map((dateStr, index) => {
       const date = new Date(dateStr);
@@ -23,7 +22,6 @@ const RevenueExpensesLineChart = ({ range }: Props) => {
         case "Month":
           return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear() ? index : -1;
         case "Year":
-          // Show last 12 months
           const yearAgo = new Date();
           yearAgo.setFullYear(now.getFullYear() - 1);
           return date >= yearAgo && date <= now ? index : -1;
@@ -39,6 +37,8 @@ const RevenueExpensesLineChart = ({ range }: Props) => {
     data: filteredIndices.map((i) => s.data[i]),
   }));
 
+  const empty = !filteredCategories.length || !filteredSeries[0].data.length;
+
   const options: ApexOptions = {
     chart: { id: "revenue-expenses", toolbar: { show: false } },
     xaxis: { categories: filteredCategories },
@@ -50,10 +50,9 @@ const RevenueExpensesLineChart = ({ range }: Props) => {
   };
 
   return (
-    <div className="bg-white shadow rounded p-4">
-      <h3 className="text-lg font-bold mb-2">Revenue vs Expenses</h3>
-      <ReactApexChart options={options} series={filteredSeries} type="line" height={350} />
-    </div>
+    <ChartCard title="Revenue vs Expenses" empty={empty}>
+      {!empty && <ReactApexChart options={options} series={filteredSeries} type="line" height="100%" />}
+    </ChartCard>
   );
 };
 
