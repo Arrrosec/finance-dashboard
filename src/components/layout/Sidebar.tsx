@@ -1,9 +1,13 @@
-interface SidebarProps {
-  activePage?: string;
-}
+import { NavLink } from "react-router-dom";
 
-const Sidebar = ({ activePage = "Dashboard" }: SidebarProps) => {
-  const links = ["Dashboard", "Reports", "Settings"];
+interface SidebarProps {}
+
+const Sidebar = ({}: SidebarProps) => {
+  const links = [
+    { name: "Dashboard", path: "/" },
+    { name: "Reports", path: "/reports" },
+    { name: "Settings", path: "/settings" },
+  ];
 
   return (
     <aside className="w-64 bg-white dark:bg-gray-800 shadow-md flex flex-col min-h-screen">
@@ -15,16 +19,19 @@ const Sidebar = ({ activePage = "Dashboard" }: SidebarProps) => {
       {/* Navigation */}
       <nav className="flex flex-col px-2 mt-4 flex-1">
         {links.map((link) => (
-          <button
-            key={link}
-            className={`text-left px-4 py-2 rounded mb-1 w-full ${
-              activePage === link
-                ? "bg-blue-500 text-white"
-                : "text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`}
+          <NavLink
+            key={link.name}
+            to={link.path}
+            className={({ isActive }) =>
+              `text-left px-4 py-2 rounded mb-1 w-full ${
+                isActive
+                  ? "bg-blue-500 text-white"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`
+            }
           >
-            {link}
-          </button>
+            {link.name}
+          </NavLink>
         ))}
       </nav>
     </aside>
