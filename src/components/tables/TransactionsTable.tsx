@@ -1,60 +1,98 @@
-
+import { useState } from "react";
 import { transactionsByRange } from "../../data/mockTransaction";
+import TransactionRow from "../../utils/TransactionRow";
 
 interface Props {
   range: "Today" | "Week" | "Month" | "Year";
 }
 
 const TransactionsTable = ({ range }: Props) => {
-  const transactions = transactionsByRange[range]; // Hardcoded by range
+  const transactions = transactionsByRange[range];
+  const [selectedRow, setSelectedRow] = useState<string | null>(null);
+  const [selectedRows, setSelectedRows] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const toggleRow = (id: string) => {
+    setSelectedRows((prev) =>
+      prev.includes(id) ? prev.filter((r) => r !== id) : [...prev, id]
+    );
+  };
+
+  const filteredTransactions = transactions.filter(
+    (t) =>
+      t.customer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      t.id.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const toggleAll = () => {
+    if (selectedRows.length === filteredTransactions.length) setSelectedRows([]);
+    else setSelectedRows(filteredTransactions.map((t) => t.id));
+  };
 
   return (
-    <div className="bg-white shadow rounded p-4 overflow-x-auto">
-      <h3 className="text-lg font-bold mb-2">Recent Transactions</h3>
-      <table className="min-w-full border border-gray-200">
-        <thead className="bg-gray-100">
+    <div className="bg-white shadow-md rounded-xl p-4 overflow-x-auto hover:shadow-lg transition-shadow duration-300">
+      {/* Header */}
+      <h3 className="text-lg font-semibold text-gray-700 uppercase tracking-wide mb-4">
+        Recent Transactions
+      </h3>
+
+      {/* Search + Add */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2 w-full">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-full sm:w-96"
+        />
+
+    
+      </div>
+
+      {/* Table */}
+      <table className="min-w-full table-auto border-collapse">
+        <thead className="bg-gray-100 rounded-t-xl">
           <tr>
-            <th className="px-4 py-2 text-left">ID</th>
-            <th className="px-4 py-2 text-left">Customer</th>
-            <th className="px-4 py-2 text-left">Amount</th>
-            <th className="px-4 py-2 text-left">Status</th>
-            <th className="px-4 py-2 text-left">Date</th>
-            <th className="px-4 py-2 text-left">Actions</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[40px]">
+              <input
+                type="checkbox"
+                className="rounded-full"
+                checked={
+                  selectedRows.length > 0 &&
+                  selectedRows.length === filteredTransactions.length
+                }
+                onChange={toggleAll}
+              />
+            </th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[50px]">ID</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[150px]">Customer</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[100px]">Amount</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[80px]">Status</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[120px]">Date</th>
+           
           </tr>
         </thead>
-     <tbody>
-  {transactions.length === 0 ? (
-    <tr>
-      <td colSpan={6} className="text-center text-gray-400 py-4">
-        No transactions found for this range
-      </td>
-    </tr>
-  ) : (
-    transactions.map((t) => (
-      <tr key={t.id} className="border-t text-left">
-        <td className="px-4 py-2">{t.id}</td>
-        <td className="px-4 py-2">{t.customer}</td>
-        <td className="px-4 py-2">${t.amount.toLocaleString()}</td>
-        <td className="px-4 py-2">
-          <span
-            className={`px-2 py-1 rounded text-white text-xs ${
-              t.status === "Paid" ? "bg-green-500" : "bg-yellow-500"
-            }`}
-          >
-            {t.status}
-          </span>
-        </td>
-        <td className="px-4 py-2">{t.date}</td>
-        <td className="px-4 py-2 space-x-2">
-          <button className="text-blue-500 hover:underline">View</button>
-          <button className="text-yellow-500 hover:underline">Edit</button>
-          <button className="text-red-500 hover:underline">Delete</button>
-        </td>
-      </tr>
-    ))
-  )}
-</tbody>
 
+        <tbody className="bg-white divide-y divide-gray-100">
+          {filteredTransactions.length === 0 ? (
+            <tr>
+              <td colSpan={7} className="text-center text-gray-400 py-4">
+                No transactions found
+              </td>
+            </tr>
+          ) : (
+            filteredTransactions.map((t) => (
+              <TransactionRow
+                key={t.id}
+                transaction={t}
+                selectedRow={selectedRow}
+                selectedRows={selectedRows}
+                toggleRow={toggleRow}
+                setSelectedRow={setSelectedRow}
+              />
+            ))
+          )}
+        </tbody>
       </table>
     </div>
   );
