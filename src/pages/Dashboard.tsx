@@ -34,8 +34,7 @@ const Dashboard = () => {
           <KPICard key={kpi.title} title={kpi.title} value={kpi.value} />
         ))}
       </div>
-
-      {/* Charts */}
+        {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 h-96">
           <RevenueExpensesLineChart range={selectedRange} />

@@ -6,14 +6,14 @@ const Sidebar = ({ activePage = "Dashboard" }: SidebarProps) => {
   const links = ["Dashboard", "Reports", "Settings"];
 
   return (
-    <aside className="w-64 bg-white dark:bg-gray-800 shadow-md flex flex-col h-screen">
+    <aside className="w-64 bg-white dark:bg-gray-800 shadow-md flex flex-col min-h-screen">
       {/* Logo / App Name */}
       <div className="text-2xl font-bold p-4 text-gray-800 dark:text-white">
         FinanceApp
       </div>
 
       {/* Navigation */}
-      <nav className="flex flex-col px-2 mt-4">
+      <nav className="flex flex-col px-2 mt-4 flex-1">
         {links.map((link) => (
           <button
             key={link}

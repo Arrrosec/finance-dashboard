@@ -2,16 +2,18 @@ import { useState } from "react";
 import Navbar from "./components/layout/NavBar";
 import Dashboard from "./pages/Dashboard";
 import Sidebar from "./components/layout/Sidebar";
+
 const AppLayout = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(true); // control sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   return (
     <div className={darkMode ? "dark min-h-screen bg-gray-900" : "min-h-screen bg-gray-50"}>
-      <div className="flex">
+      {/* Outer flex container fills full viewport height */}
+      <div className="flex min-h-screen">
         {/* Sidebar */}
         {sidebarOpen && <Sidebar />}
 
@@ -24,7 +26,8 @@ const AppLayout = () => {
             pageTitle="Dashboard"
           />
 
-          <main className="p-6 flex-1 overflow-auto">
+          {/* Scrollable main content */}
+          <main className="flex-1 p-6 overflow-auto">
             <Dashboard />
           </main>
         </div>
