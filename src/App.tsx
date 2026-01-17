@@ -21,7 +21,7 @@ const AppLayout = () => {
             darkMode={darkMode}
             toggleDarkMode={toggleDarkMode}
             toggleSidebar={toggleSidebar}
-            pageTitle="Finance Dashboard"
+            pageTitle="Dashboard"
           />
 
           <main className="p-6 flex-1 overflow-auto">
