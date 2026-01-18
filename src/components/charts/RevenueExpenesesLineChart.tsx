@@ -21,40 +21,55 @@ const empty = !selectedData;
 
 
   const options: ApexOptions = {
-    chart: {
-      id: "revenue-expenses",
-      toolbar: { show: false },
-    },
-
-    title: {
-      text: getChartTitle(range),
-      align: "left",
-    },
-
-   xaxis: {
-  categories: selectedData?.categories,
-  labels: {
-    formatter: (val: string | number) => String(formatXAxisLabel(String(val), range)),
+  chart: {
+    id: "revenue-expenses",
+    toolbar: { show: false },
   },
-},
 
+  title: {
+    text: getChartTitle(range),
+    align: "left",
+  },
 
-    tooltip: {
-      x: {
-        formatter: (val) =>
-          new Date(String(val)).toLocaleDateString([], {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          }),
-      },
+  xaxis: {
+    categories: selectedData?.categories,
+    labels: {
+      formatter: (val: string | number) => String(formatXAxisLabel(String(val), range)),
     },
+  },
 
-    stroke: { curve: "smooth" },
-    colors: ["#3B82F6", "#EF4444"],
-    legend: { position: "top" },
-    dataLabels: { enabled: false },
-  };
+  tooltip: {
+    x: {
+      formatter: (val) =>
+        new Date(String(val)).toLocaleDateString([], {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        }),
+    },
+  },
+
+  stroke: { curve: "smooth" },
+
+  colors: ["#3B82F6", "#EF4444"],
+
+  // <--- ADD THIS BLOCK
+  fill: {
+    type: "gradient", // or "solid"
+    gradient: {
+      shade: "light",
+      type: "vertical",
+      shadeIntensity: 0.3,
+      opacityFrom: 0.4, // top of area
+      opacityTo: 0,     // bottom of area
+      stops: [0, 90, 100],
+    },
+  },
+
+  legend: { position: "top" },
+  dataLabels: { enabled: false },
+};
+
 
   return (
     <ChartCard title="Revenue vs Expenses" empty={empty}>
