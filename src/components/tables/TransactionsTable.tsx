@@ -53,7 +53,7 @@ const TransactionsTable = ({ range }: Props) => {
       <table className="min-w-full table-auto border-collapse">
         <thead className="bg-gray-100 rounded-t-xl">
           <tr>
-            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[40px]">
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-40px">
               <input
                 type="checkbox"
                 className="rounded-full"
@@ -64,11 +64,11 @@ const TransactionsTable = ({ range }: Props) => {
                 onChange={toggleAll}
               />
             </th>
-            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[50px]">ID</th>
-            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[150px]">Customer</th>
-            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[100px]">Amount</th>
-            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[80px]">Status</th>
-            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-[120px]">Date</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-50px">ID</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-150px">Customer</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-100px">Amount</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-80px">Status</th>
+            <th className="px-3 py-2 text-left text-gray-600 text-sm max-w-120px">Date</th>
            
           </tr>
         </thead>
