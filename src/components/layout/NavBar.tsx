@@ -2,10 +2,11 @@ interface NavbarProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
   pageTitle: string;
-  toggleSidebar: () => void; // new prop
+  toggleSidebar: () => void;
+  sidebarOpen: boolean; // new prop
 }
 
-const Navbar = ({ darkMode, toggleDarkMode, pageTitle, toggleSidebar }: NavbarProps) => {
+const Navbar = ({ darkMode, toggleDarkMode, pageTitle, toggleSidebar, sidebarOpen }: NavbarProps) => {
   return (
     <header className="bg-white dark:bg-gray-800 shadow flex justify-between items-center h-16 px-6">
       
@@ -15,7 +16,7 @@ const Navbar = ({ darkMode, toggleDarkMode, pageTitle, toggleSidebar }: NavbarPr
           onClick={toggleSidebar}
           className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
         >
-          ☰
+          {sidebarOpen ? "☰" : "✕"} {/* <-- change icon based on state */}
         </button>
 
         <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
@@ -34,5 +35,6 @@ const Navbar = ({ darkMode, toggleDarkMode, pageTitle, toggleSidebar }: NavbarPr
     </header>
   );
 };
+
 
 export default Navbar;

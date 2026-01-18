@@ -26,7 +26,9 @@ const AppLayout = () => {
               darkMode={darkMode}
               toggleDarkMode={toggleDarkMode}
               toggleSidebar={toggleSidebar}
+               sidebarOpen={sidebarOpen}
               pageTitle="Dashboard"
+              
             />
 
             {/* Scrollable main content */}
