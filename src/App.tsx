@@ -14,11 +14,13 @@ const AppLayout = () => {
 
   return (
     <Router>
-      <div className={darkMode ? "dark min-h-screen bg-gray-900" : "min-h-screen bg-gray-50"}>
+  <div className={darkMode ? "dark min-h-screen bg-gray-900" : "min-h-screen bg-gray-100"}>
+
+
         {/* Outer flex container fills full viewport height */}
         <div className="flex min-h-screen">
           {/* Sidebar */}
-          {sidebarOpen && <Sidebar />}
+       {sidebarOpen && <Sidebar darkMode={darkMode} />}
 
           {/* Main content */}
           <div className="flex-1 flex flex-col">
@@ -33,11 +35,12 @@ const AppLayout = () => {
 
             {/* Scrollable main content */}
             <main className="flex-1 p-6 overflow-auto">
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/reports" element={<ComingSoon page="Reports" />} />
-                <Route path="/settings" element={<ComingSoon page="Settings" />} />
-              </Routes>
+            <Routes>
+          <Route path="/" element={<Dashboard darkMode={darkMode} />} />
+          <Route path="/reports" element={<ComingSoon page="Reports" />} />
+          <Route path="/settings" element={<ComingSoon page="Settings"  />} />
+        </Routes>
+
             </main>
           </div>
         </div>
