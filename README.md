@@ -7,7 +7,7 @@ An interactive React dashboard for visualizing company finances. Tracks revenue,
 React | TypeScript | Vite | Tailwind CSS | Frontend Only
 
 **Live Demo:**  
-[Click here to see the project live]((https://finance-dashboard-ten-drab.vercel.app))
+[Link]((https://finance-dashboard-ten-drab.vercel.app))
 
 **Repository:**  
 [GitHub]((https://github.com/Arrrosec/finance-dashboard))
