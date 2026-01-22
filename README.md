@@ -1,73 +1,37 @@
-# React + TypeScript + Vite
+# Finance Analytics Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Short Description:**  
+An interactive React dashboard for visualizing company finances. Tracks revenue, expenses, net profit, and monthly growth with dynamic charts, tables, and responsive cards for quick insights.
 
-Currently, two official plugins are available:
+**Tech Stack:**  
+React | TypeScript | Vite | Tailwind CSS | Frontend Only
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live Demo:**  
+[Click here to see the project live](https://your-live-link.com)
 
-## React Compiler
+**Repository:**  
+[GitHub](https://github.com/your-repo/finance-dashboard)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Key Achievements:**  
+- Developed a responsive dashboard with dynamic charts, KPIs, and transaction tables for actionable financial insights.  
+- Implemented filters, cards, and mock data to simulate realistic business metrics and ensure intuitive UX for decision-making.  
 
-## Expanding the ESLint configuration
+## Screenshots / GIFs
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Dashboard Overview](./screenshots/dashboard_overview.png)  
+*Main dashboard showing revenue, expenses, net profit, and growth trends*
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Transaction Table](./screenshots/transactions.png)  
+*Recent transactions table with filtering options*
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![Responsive View](./screenshots/responsive.png)  
+*Responsive layout across devices*
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**License:**  
+MIT License. See the [LICENSE](./LICENSE) file for details.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Notes:**  
+- Frontend-only MVP; backend integration for real data can be added  
+- Dashboard is designed to be accessible and intuitive for business users
