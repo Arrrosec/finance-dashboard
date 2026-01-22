@@ -11,7 +11,8 @@ React | TypeScript | Vite | Tailwind CSS | Frontend Only
 
 
 **Repository:**  
-[GitHub]((https://github.com/Arrrosec/finance-dashboard))
+[GitHub](https://github.com/Arrrosec/finance-dashboard)
+
 
 **Key Achievements:**  
 - Developed a responsive dashboard with dynamic charts, KPIs, and transaction tables for actionable financial insights.  
