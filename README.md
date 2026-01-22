@@ -20,14 +20,10 @@ React | TypeScript | Vite | Tailwind CSS | Frontend Only
 
 ## Screenshots / GIFs
 
-![Dashboard Overview](./screenshots/dashboard_overview.png)  
+![Dashboard Light](./public/dashboard-light.png)  
 *Main dashboard showing revenue, expenses, net profit, and growth trends*
 
-![Transaction Table](./screenshots/transactions.png)  
-*Recent transactions table with filtering options*
-
-![Responsive View](./screenshots/responsive.png)  
-*Responsive layout across devices*
+![Dashboard Dark](./public/dashboard-dark.png)  
 
 ---
 
