@@ -28,7 +28,7 @@ React | TypeScript | Vite | Tailwind CSS | Frontend Only
 ---
 
 **License:**  
-MIT License. See the [LICENSE](./LICENSE) file for details.
+Copyright © 2026. All rights reserved. This project is proprietary — see [`LICENSE`](./LICENSE) for full terms.
 
 **Notes:**  
 - Frontend-only MVP; backend integration for real data can be added  
