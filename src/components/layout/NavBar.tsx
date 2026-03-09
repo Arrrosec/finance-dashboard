@@ -42,7 +42,7 @@ const Navbar = ({
         {/* Dark mode toggle */}
         <button
           onClick={toggleDarkMode}
-          className={`${btnBg} ${btnText} p-2 rounded transition-colors duration-100`}
+          className={`${btnBg} ${btnText} p-2 rounded transition-colors duration-200`}
         >
           <FeatherIcon icon={darkMode ? "moon" : "sun"} size={20} />
         </button>
