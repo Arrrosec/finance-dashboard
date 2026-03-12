@@ -59,7 +59,7 @@ const Sidebar = ({ darkMode }: SidebarProps) => {
                     ? "text-white"
                     : "text-emerald-700"
                   : darkMode
-                  ? "text-gray-400 group-hover:text-white"
+                  ? "text-gray-600 group-hover:text-white"
                   : "text-black group-hover:text-emerald-700"
               }`;
 
