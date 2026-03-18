@@ -13,7 +13,7 @@ const KPICard = ({
 }: KPICardProps) => {
   return (
     <div
-      className={`shadow rounded p-3 flex flex-col justify-between transition-colors
+      className={`shadow rounded p-4 flex flex-col justify-between transition-colors
         ${darkMode ? "bg-[#1e293b] border border-[#334155]" : "bg-[#f8fafc] border border-[#e2e8f0]"}`}
     >
       <p
