@@ -17,7 +17,7 @@ const ChartCard = ({
 }: ChartCardProps) => {
   return (
     <div
-      className={`shadow rounded p-4 h-full flex flex-col transition-colors
+      className={`shadow rounded p-3 h-full flex flex-col transition-colors
         ${darkMode ? "bg-[#1e293b] border border-[#334155]" : "bg-white border border-[#e2e8f0]"}`}
     >
       <h3
