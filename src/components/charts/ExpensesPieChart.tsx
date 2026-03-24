@@ -80,7 +80,7 @@ const ExpensesPieChart = ({ range, darkMode = false }: Props) => {
     <ChartCard
       title="Expenses by Category"
       empty={empty}
-      emptyMessage="No expense data available"
+      emptyMessage="No expense data "
       darkMode={darkMode}
     >
       {!empty && (
